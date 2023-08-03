@@ -34,16 +34,11 @@ const ImageUpload = ({ setImageUrl }) => {
       const formData = new FormData();
       formData.append("file", newFileList[0].originFileObj);
 
-      await axios
-        .post(
-          "https://house-hunter-server-bay.vercel.app/api/v1/house/upload",
-          formData
-        )
-        .then((res) => {
-          if (res.status === 200) {
-            setImageUrl(res.data.url);
-          }
-        });
+      await axios.post("http://localhost:5000/upload", formData).then((res) => {
+        if (res.status === 200) {
+          setImageUrl(res.data.url);
+        }
+      });
     } catch (error) {
       console.log(error);
     }
@@ -59,7 +54,7 @@ const ImageUpload = ({ setImageUrl }) => {
   return (
     <div className="">
       <Upload
-        action="https://house-hunter-server-bay.vercel.app/api/v1/house/upload"
+        action="http://localhost:5000/upload"
         className="text-black w-80"
         listType="picture-card"
         fileList={fileList}

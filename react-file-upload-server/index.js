@@ -36,6 +36,7 @@ app.post('/upload', upload.single('file'), async function (req, res) {
     const result = await cloudinary.uploader.upload(req.file.path);
 
     const imageUrl = result.secure_url;
+    console.log(imageUrl);
 
     res.json({ message: 'Image uploaded successfully!', url: imageUrl });
   } catch (err) {

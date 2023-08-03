@@ -15,7 +15,7 @@ function App() {
         <ImageUpload setImageUrl={setImageUrl} imageUrl={imageUrl} />
 
         {imageUrl && (
-          <div className="mt-16">
+          <div className="mt-16 w-[30rem]">
             <label className=" text-lg text-center text-gray-500 dark:text-gray-400">
               Image link
             </label>
