@@ -35,7 +35,7 @@ const ImageUpload = ({ setImageUrl }) => {
       formData.append("file", newFileList[0].originFileObj);
 
       await axios
-        .post("https://react-file-upload-server.vercel.app/", formData)
+        .post("https://react-file-upload-server.vercel.app/upload", formData)
         .then((res) => {
           if (res.status === 200) {
             setImageUrl(res.data.url);
@@ -56,7 +56,7 @@ const ImageUpload = ({ setImageUrl }) => {
   return (
     <div className="">
       <Upload
-        action="https://react-file-upload-server.vercel.app/"
+        action="https://react-file-upload-server.vercel.app/upload"
         className="text-black w-80"
         listType="picture-card"
         fileList={fileList}
