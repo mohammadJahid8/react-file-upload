@@ -34,11 +34,13 @@ const ImageUpload = ({ setImageUrl }) => {
       const formData = new FormData();
       formData.append("file", newFileList[0].originFileObj);
 
-      await axios.post("http://localhost:5000/upload", formData).then((res) => {
-        if (res.status === 200) {
-          setImageUrl(res.data.url);
-        }
-      });
+      await axios
+        .post("https://react-file-upload-server.vercel.app/", formData)
+        .then((res) => {
+          if (res.status === 200) {
+            setImageUrl(res.data.url);
+          }
+        });
     } catch (error) {
       console.log(error);
     }
@@ -54,7 +56,7 @@ const ImageUpload = ({ setImageUrl }) => {
   return (
     <div className="">
       <Upload
-        action="http://localhost:5000/upload"
+        action="https://react-file-upload-server.vercel.app/"
         className="text-black w-80"
         listType="picture-card"
         fileList={fileList}
